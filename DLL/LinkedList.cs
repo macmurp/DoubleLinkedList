@@ -25,7 +25,7 @@ namespace DLL
                 {
                     Node next = current.Next;
 
-                    if (next.Next == null)
+                    if (next == null)
                     {
                         //add to end
                         //add to tail.Next will always add on the end
@@ -71,14 +71,55 @@ namespace DLL
             return null;
         }
 
-        public Node Search(string data)
+        public Node SearchFromHead(string data)
         {
             // search for node by data;
             // return reference to first node found; else null node
-            return null;
+            Node current = head;
 
+            while(current != null)
+            {
+                if (current == null)
+                {
+                    //if looping happens below and it never finds search result, this will activate
+                    return null;
+                }
+                
+                if (current.Data.CompareTo(data) == 0)
+                {
+                    return current;
+                }
+                current = current.Next;
+                //loop
+            }
+            //if head was null in first place, will never enter while loop and will return here
+            return null;
         }
 
+        public Node SearchFromTail(string data) //WIP
+        {
+            // search for node by data;
+            // return reference to first node found; else null node
+            Node current = head;
+
+            while (current != null)
+            {
+                if (current == null)
+                {
+                    //if looping happens below and it never finds search result, this will activate
+                    return null;
+                }
+
+                if (current.Data.CompareTo(data) == 0)
+                {
+                    return current;
+                }
+                current = current.Next;
+                //loop
+            }
+            //if head was null in first place, will never enter while loop and will return here
+            return null;
+        }
 
     }
 }
